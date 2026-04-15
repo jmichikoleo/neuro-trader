@@ -1,0 +1,15 @@
+{
+  "name": "neuro-trader",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multi-agent IHSG research — runs backend + frontend together",
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c magenta,cyan \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && . .venv/bin/activate && uvicorn app.main:app --reload --port 8000",
+    "dev:frontend": "cd frontend && npm run dev",
+    "setup": "cd backend && python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt && cd ../frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
